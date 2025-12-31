@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed Cirro | Tech Portfolio</title>
+<style>
+/* ===== GLOBAL ===== */
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; transition:0.3s;}
+body {background:#f0f2f5; color:#333; overflow-x:hidden;}
+body.dark {background:#121212; color:#eee;}
+a {text-decoration:none; color:inherit;}
+img {max-width:100%; display:block; border-radius:10px;}
+/* ===== HEADER ===== */
+header {position:fixed; top:0; left:0; width:100%; background:#0d1117; color:white; display:flex; justify-content:space-between; align-items:center; padding:15px 50px; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,0.2);}
+header.dark {background:#1e1e1e;}
+header h1 {font-size:24px; font-weight:700;}
+nav a {margin-left:25px; font-weight:500; transition:0.3s; color:white; cursor:pointer;}
+nav a:hover {color:#38bdf8;}
+.toggle-btn {cursor:pointer; background:#38bdf8; color:white; border:none; padding:8px 12px; border-radius:6px; font-weight:600;}
+/* ===== SECTIONS ===== */
+section {padding:120px 50px; min-height:100vh; opacity:0; transform:translateY(50px);}
+section.active {opacity:1; transform:translateY(0); transition:1s ease;}
+/* ===== HERO ===== */
+.hero {background: url('./image/homepgae-cover.jpg.jpeg') no-repeat center center/cover; color:white; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; position:relative;}
+.hero::after {content:""; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6);}
+.hero-content {position:relative; z-index:1;}
+.hero h2 {font-size:48px; margin-bottom:15px;}
+.hero p {font-size:20px; max-width:700px; margin:auto; margin-bottom:15px;}
+.hero .typing {color:#38bdf8; font-weight:600; font-size:22px; height:28px;}
+/* ===== ABOUT ===== */
+.about {display:flex; flex-wrap:wrap; gap:40px; align-items:center; justify-content:center;}
+.about img {border-radius:20px; width:300px; height:300px; object-fit:cover; box-shadow:0 10px 25px rgba(0,0,0,0.3);}
+.about-info {max-width:600px;}
+.about-info h3 {font-size:32px; margin-bottom:15px;}
+.about-info p {font-size:16px; margin-bottom:10px; line-height:1.6;}
+.skills {margin-top:20px; display:flex; flex-wrap:wrap; gap:10px;}
+.skills span {display:inline-block; background:#38bdf8; color:white; padding:5px 10px; border-radius:5px; font-weight:500; transform:scale(0); opacity:0; transition:0.5s;}
+/* ===== PROJECTS ===== */
+.projects {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px;}
+.project-card {background:white; padding:20px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1); transition:0.5s; opacity:0; transform:translateY(50px);}
+.project-card:hover {transform:translateY(-10px) scale(1.05);}
+.project-card h4 {margin-bottom:10px;}
+.project-card p {font-size:14px; color:#555;}
+.project-card a {display:block; margin-top:10px; color:#38bdf8; font-weight:600;}
+/* ===== SERVICES ===== */
+.services {display:flex; flex-direction:column; gap:20px;}
+.service-card {background:white; padding:20px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1); transition:0.5s; opacity:0; transform:translateY(50px);}
+.service-card h4 {margin-bottom:10px;}
+.service-card p {font-size:14px; color:#555;}
+/* ===== CONTACT ===== */
+.contact form {max-width:600px; margin:auto; display:flex; flex-direction:column; gap:15px;}
+.contact input, .contact textarea {padding:12px; border-radius:8px; border:1px solid #ccc; width:100%; font-size:16px;}
+.contact input:focus, .contact textarea:focus {border-color:#38bdf8; outline:none; box-shadow:0 0 5px #38bdf8;}
+.contact button {padding:12px; border:none; border-radius:8px; background:#38bdf8; color:white; font-weight:600; cursor:pointer; transition:0.3s;}
+.contact button:hover {background:#0ea5e9;}
+/* ===== FOOTER ===== */
+footer {background:#0d1117; color:white; text-align:center; padding:25px 50px;}
+footer.dark {background:#1e1e1e;}
+.social a {margin:0 10px; transition:0.3s; color:white;}
+.social a:hover {color:#38bdf8;}
+@media(max-width:768px){header {flex-direction:column; gap:10px;} .hero h2{font-size:36px;}}
+</style>
+</head>
+<body>
+
+<header id="header">
+    <h1>Mohamed Cirro</h1>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <button class="toggle-btn" id="darkModeToggle">Dark Mode</button>
+</header>
+
+<!-- HOME -->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h2>Welcome to My Tech Universe</h2>
+        <p class="typing" id="typing"></p>
+        <p>English: Explore projects, skills, and latest tech trends.<br>Somali: Baro mashaariicda, xirfadaha, iyo tiknoolajiyada cusub.</p>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <h2 style="text-align:center; margin-bottom:40px;">About Me</h2>
+    <div class="about">
+        <img src="./image/about.jpg.jpeg" alt="Mohamed Cirro">
+        <div class="about-info">
+            <h3>Mohamed Cirro | Computer Science & IT Student</h3>
+            <p>
+            English: I study at <strong>Jazeera University</strong>, Faculty of <strong>Computer Science & IT</strong>. I have skills in Python, SQL, HTML, CSS, JavaScript, and problem-solving. I love creating apps, exploring AI, and web technologies.<br>
+            Somali: Waxaan dhigtaa <strong>Jaamacadda Jazeera</strong>, Faculty-ga <strong>Computer Science & IT</strong>. Waxaan leeyahay xirfado Python, SQL, HTML, CSS, JavaScript iyo xalinta dhibaatooyinka. Waxaan jecelahay horumarinta apps, barashada AI, iyo tiknoolajiyada webka.
+            </p>
+            <div class="skills">
+                <span>Python</span>
+                <span>SQL</span>
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>A+</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <h2 style="text-align:center; margin-bottom:40px;">My Projects</h2>
+    <div class="projects">
+        <div class="project-card">
+            <h4>Python Automation</h4>
+            <p>Automated tasks using Python scripts for productivity improvements.</p>
+            <a href="https://github.com/mohancirro/python-automation" target="_blank">View Project</a>
+        </div>
+        <div class="project-card">
+            <h4>Web Development</h4>
+            <p>Responsive websites using HTML, CSS, and JavaScript with modern design.</p>
+            <a href="https://github.com/mohancirro/web-development" target="_blank">View Project</a>
+        </div>
+        <div class="project-card">
+            <h4>SQL Database</h4>
+            <p>Design and management of relational databases and optimized queries.</p>
+            <a href="https://github.com/mohancirro/sql-database" target="_blank">View Project</a>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+    <h2 style="text-align:center; margin-bottom:40px;">My Services</h2>
+    <div class="services">
+        <div class="service-card">
+            <h4>Web Design & Development</h4>
+            <p>Creating responsive, fast, and modern websites with engaging UI/UX design.</p>
+        </div>
+        <div class="service-card">
+            <h4>Programming & Automation</h4>
+            <p>Develop applications, automate tasks, and implement efficient solutions.</p>
+        </div>
+        <div class="service-card">
+            <h4>IT Consulting & Tech Guidance</h4>
+            <p>Providing advice and strategies for tech projects, software, and innovations.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <h2 style="text-align:center; margin-bottom:40px;">Contact Me</h2>
+    <div class="contact">
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+    <p>Connect with me:</p>
+    <div class="social">
+        <a href="https://wa.me/your_number" target="_blank">WhatsApp</a>
+        <a href="https://facebook.com/your_profile" target="_blank">Facebook</a>
+        <a href="https://x.com/your_profile" target="_blank">X-Space</a>
+        <a href="https://linkedin.com/in/your_profile" target="_blank">LinkedIn</a>
+    </div>
+    <p style="margin-top:15px;">&copy; 2025 Mohamed Cirro. All Rights Reserved.</p>
+</footer>
+
+<script>
+// Smooth Scroll
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(link.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+    });
+});
+
+// Dark Mode Toggle
+const toggleBtn = document.getElementById('darkModeToggle');
+toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    document.getElementById('header').classList.toggle('dark');
+    document.getElementById('footer').classList.toggle('dark');
+    toggleBtn.textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+});
+
+// Typing Animation for Home Page
+const phrases = ["Innovate | Learn | Inspire", "Code Your Future", "Explore AI & Web Tech"];
+let i = 0, j = 0;
+const typingEl = document.getElementById('typing');
+
+function type() {
+    if(i < phrases.length){
+        if(j < phrases[i].length){
+            typingEl.innerHTML += phrases[i][j];
+            j++;
+            setTimeout(type, 100);
+        } else {
+            setTimeout(() => {
+                erase();
+            }, 1500);
+        }
+    } else {i=0; type();}
+}
+function erase(){
+    if(j>0){
+        typingEl.innerHTML = phrases[i].substring(0,j-1);
+        j--;
+        setTimeout(erase,50);
+    } else {
+        i++;
+        type();
+    }
+}
+window.onload = type;
+
+// Scroll Reveal Animations
+const sections = document.querySelectorAll('section');
+const projectCards = document.querySelectorAll('.project-card');
+const serviceCards = document.querySelectorAll('.service-card');
+const skillSpans = document.querySelectorAll('.skills span');
+
+function reveal(){
+    const triggerBottom = window.innerHeight * 0.85;
+    sections.forEach(section=>{
+        const top = section.getBoundingClientRect().top;
+        if(top < triggerBottom) section.classList.add('active');
+    });
+    projectCards.forEach((card,i)=>{
+        const top = card.getBoundingClientRect().top;
+        if(top < triggerBottom){
+            setTimeout(()=>{card.style.opacity=1; card.style.transform='translateY(0)';}, i*200);
+        }
+    });
+    serviceCards.forEach((card,i)=>{
+        const top = card.getBoundingClientRect().top;
+        if(top < triggerBottom){
+            setTimeout(()=>{card.style.opacity=1; card.style.transform='translateY(0)';}, i*200);
+        }
+    });
+    skillSpans.forEach((span,i)=>{
+        const top = span.getBoundingClientRect().top;
+        if(top < triggerBottom){
+            setTimeout(()=>{span.style.opacity=1; span.style.transform='scale(1)';}, i*200);
+        }
+    });
+}
+window.addEventListener('scroll',reveal);
+window.addEventListener('load',reveal);
+</script>
+</body>
+</html>
